@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StartWindow extends JFrame {
 
@@ -37,6 +39,13 @@ public class StartWindow extends JFrame {
         gbc.gridy++;
         JButton startButton = new JButton("Start");
         centerPanel.add(startButton, gbc);
+
+        startButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                QuizWindow quizWindow = new QuizWindow();
+            }
+                                      }
+        );
 
         add(centerPanel, BorderLayout.CENTER);
 
