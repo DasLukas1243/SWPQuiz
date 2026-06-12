@@ -9,7 +9,7 @@ public class StartWindow extends JFrame {
     public StartWindow() {
         setTitle("SWP Quiz");
         setSize(500, 300);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         setLayout(new BorderLayout());
@@ -43,6 +43,7 @@ public class StartWindow extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 QuizWindow quizWindow = new QuizWindow();
+                
             }
                                       }
         );
