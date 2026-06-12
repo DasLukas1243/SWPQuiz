@@ -6,7 +6,10 @@ import java.awt.event.ActionListener;
 
 public class StartWindow extends JFrame {
 
+    private StartWindow startfenster;
+
     public StartWindow() {
+        startfenster = this;
         setTitle("SWP Quiz");
         setSize(500, 300);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -43,6 +46,7 @@ public class StartWindow extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 QuizWindow quizWindow = new QuizWindow();
+                startfenster.dispose();
                 
             }
                                       }

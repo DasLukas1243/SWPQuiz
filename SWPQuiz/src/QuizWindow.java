@@ -39,6 +39,31 @@ public class QuizWindow extends JFrame {
             right.add(new JLabel("RICHTIG! (schließe mich indem du aufs X klickts)", SwingConstants.CENTER));
             right.setVisible(true);
 
+            question.setText("Das ist die nächste Frage");
+            A1.setText("A1");
+            A2.setText("A2");
+            A3.setText("A3");
+
+        });
+
+        A2.addActionListener(e -> {
+            JFrame right = new JFrame("Flasch");
+            right.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            right.setSize(300, 200);
+            right.setLocationRelativeTo(null);
+            right.add(new JLabel("NEIN", SwingConstants.CENTER));
+            right.setVisible(true);
+
+        });
+
+        A3.addActionListener(e -> {
+            JFrame right = new JFrame("Ich auch");
+            right.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            right.setSize(300, 200);
+            right.setLocationRelativeTo(null);
+            right.add(new JLabel("I mag huam", SwingConstants.CENTER));
+            right.setVisible(true);
+
         });
 
         setVisible(true);
