@@ -3,5 +3,5 @@ import java.util.ArrayList;
 
 public class Questions {
     private String text;
-    private ArrayList<Anwser> anwser;
+    private ArrayList<Answer> anwser;
 }

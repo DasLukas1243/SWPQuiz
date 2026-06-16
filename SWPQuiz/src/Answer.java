@@ -1,8 +1,8 @@
-public class Anwser {
+public class Answer {
     private String text;
     private boolean isCorrect;
 
-    public Anwser(String text, boolean isCorrect) {
+    public Answer(String text, boolean isCorrect) {
         this.text = text;
         this.isCorrect = isCorrect;
 

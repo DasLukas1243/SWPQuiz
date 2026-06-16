@@ -3,7 +3,16 @@ import java.awt.*;
 
 public class QuizWindow extends JFrame {
 
-    QuizWindow() {
+
+
+
+
+
+
+
+
+
+    QuizWindow(String playerName) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 200);
         setLocationRelativeTo(null);
@@ -12,7 +21,7 @@ public class QuizWindow extends JFrame {
         setLayout(new BorderLayout());
 
         // Frage oben
-        JLabel question = new JLabel("Funktioniere ich?", SwingConstants.CENTER);
+        JLabel question = new JLabel("Frage 1", SwingConstants.CENTER);
         question.setFont(new Font("Arial", Font.BOLD, 18));
         add(question, BorderLayout.NORTH);
 
@@ -20,7 +29,7 @@ public class QuizWindow extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
-        JButton A1 = new JButton("Ja");
+        JButton A1 = new JButton("Hallo" + playerName);
         JButton A2 = new JButton("Nein");
         JButton A3 = new JButton("Ich will zu Mama!");
 

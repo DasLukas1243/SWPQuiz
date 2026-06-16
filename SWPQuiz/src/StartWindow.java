@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 public class StartWindow extends JFrame {
 
     private StartWindow startfenster;
+    private String playerName;
+
+
 
     public StartWindow() {
         startfenster = this;
@@ -45,8 +48,13 @@ public class StartWindow extends JFrame {
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                QuizWindow quizWindow = new QuizWindow();
+                playerName =  nameField.getText();
+                if(playerName.isEmpty()) {
+                    System.exit(0);
+                }
+                QuizWindow quizWindow = new QuizWindow(playerName);
                 startfenster.dispose();
+
                 
             }
                                       }
