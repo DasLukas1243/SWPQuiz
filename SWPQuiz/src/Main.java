@@ -2,7 +2,7 @@ import javax.swing.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
+public void main(String[] args) {
     StartWindow frame = new StartWindow();
 
 }

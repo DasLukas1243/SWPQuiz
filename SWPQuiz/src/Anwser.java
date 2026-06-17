@@ -1,14 +1,17 @@
 public class Anwser {
     private String text;
-    private boolean isCorrect;
+    private boolean correct;
 
-    public Anwser(String text, boolean isCorrect) {
+    public Anwser(String text, boolean correct) {
         this.text = text;
-        this.isCorrect = isCorrect;
-
+        this.correct = correct;
     }
 
     public String getText() {
         return text;
+    }
+
+    public boolean isCorrect() {
+        return correct;
     }
 }
