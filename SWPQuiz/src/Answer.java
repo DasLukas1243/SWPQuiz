@@ -1,4 +1,4 @@
-public class Anwser {
+public class Answer {
     private String text;
     private boolean correct;
 
