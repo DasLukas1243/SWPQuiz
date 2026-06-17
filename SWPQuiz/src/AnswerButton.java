@@ -11,7 +11,4 @@ public class AnswerButton extends JButton {
         return answer;
     }
 
-    Answer a1 = new Answer("Answer 1", true);
-    Answer a2 = new Answer("Answer 2", false);
-    Answer a3 = new Answer("Answer 3", false);
 }

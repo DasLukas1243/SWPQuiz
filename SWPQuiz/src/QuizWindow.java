@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class QuizWindow extends JFrame {
 
@@ -16,6 +17,15 @@ public class QuizWindow extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 200);
         setLocationRelativeTo(null);
+
+        Answer a1 = new Answer("Ja",true);
+        Answer a2 = new Answer("Nein",false);
+        Answer a3 = new Answer("Weiß nicht",false);
+        ArrayList<Answer> liste1 = new ArrayList();
+        liste1.add(0,a1);
+        liste1.add(1,a2);
+        liste1.add(2,a3);
+        Questions q1 = new Questions("Funktioniere ich?", liste1);
 
         // Hauptlayout
         setLayout(new BorderLayout());
