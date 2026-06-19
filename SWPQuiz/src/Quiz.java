@@ -3,17 +3,19 @@ import java.util.ArrayList;
 public class Quiz {
     private ArrayList<Questions> questions;
 
-    Answer answer1 = new Answer("Ja", true);
-    Answer answer2 = new Answer("Nein", false);
-    Answer answer3 = new Answer("Ich enthalte mich", false);
+    private Answer answer1 = new Answer("Ja", true);
+    private Answer answer2 = new Answer("Nein", false);
+    private Answer answer3 = new Answer("Ich enthalte mich", false);
+    private Answer answer4 = new Answer("Counterstrike Global Offensive", true);
+    private Answer answer5 = new Answer("Combat Strike Global Operation", false);
+    private Answer answer6 = new Answer("Counter Shot Global Online", false);
+    private Answer answer7 = new Answer("Nirvana", false);
+    private Answer answer8 = new Answer("AC/DC", false);
+    private Answer answer9 = new Answer("Queen", true);
 
-    Answer answer4 = new Answer("Counterstrike Global Offensive", true);
-    Answer answer5 = new Answer("Combat Strike Global Operation", false);
-    Answer answer6 = new Answer("Counter Shot Global Online", false);
-
-    Answer answer7 = new Answer("Nirvana", false);
-    Answer answer8 = new Answer("AC/DC", false);
-    Answer answer9 = new Answer("Queen", true);
+    public ArrayList<Questions> getQuestions() {
+        return questions;
+    }
 
     public Quiz() {
         ArrayList<Answer> answerListYesTrue = new ArrayList<>();
@@ -35,6 +37,10 @@ public class Quiz {
         Questions q2 = new Questions("Was heißt CS:GO ausgeschrieben?", answerListCs);
         Questions q3 = new Questions("Welche Band hat das Lied Bohemian Rhapsody geschrieben?",  answerListBR);
 
+        questions = new ArrayList<>();
+        questions.add(q1);
+        questions.add(q2);
+        questions.add(q3);
 
     }
 

@@ -8,6 +8,7 @@ public class StartWindow extends JFrame {
 
     private StartWindow startfenster;
     private String playerName;
+    private Quiz quiz = new  Quiz();
 
 
 
@@ -52,12 +53,12 @@ public class StartWindow extends JFrame {
                 if(playerName.isEmpty()) {
                     System.exit(0);
                 }
-                QuizWindow quizWindow = new QuizWindow(playerName);
+                QuizWindow quizWindow = new QuizWindow(playerName, quiz);
                 startfenster.dispose();
 
                 
             }
-                                      }
+        }
         );
 
         add(centerPanel, BorderLayout.CENTER);

@@ -1,65 +1,77 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class QuizWindow extends JFrame {
+    private int questionCount;
+    private Quiz quiz;
+    private Questions question;
+    private Answer answer1;
+    private Answer answer2;
+    private Answer answer3;
 
+    JLabel questionLabel;
+    JButton answer1Button;
+    JButton answer2Button;
+    JButton answer3Button;
 
-
-
-
-
-
-
-
-
-    QuizWindow(String playerName) {
+    QuizWindow(String playerName, Quiz quiz) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 200);
         setLocationRelativeTo(null);
 
-        Answer a1 = new Answer("Ja",true);
-        Answer a2 = new Answer("Nein",false);
-        Answer a3 = new Answer("Weiß nicht",false);
-        ArrayList<Answer> liste1 = new ArrayList();
-        liste1.add(0,a1);
-        liste1.add(1,a2);
-        liste1.add(2,a3);
-        Questions q1 = new Questions("Funktioniere ich?", liste1);
+        this.quiz = quiz;
 
-        // Hauptlayout
-        setLayout(new BorderLayout());
+        questionCount = 0;
 
-        // Frage oben
-        JLabel question = new JLabel("Frage 1", SwingConstants.CENTER);
-        question.setFont(new Font("Arial", Font.BOLD, 18));
-        add(question, BorderLayout.NORTH);
+        JPanel panelQuiz = new JPanel();
+        panelQuiz.setLayout(new BoxLayout(panelQuiz, BoxLayout.Y_AXIS));
+        JPanel panelQuestion = new JPanel();
+        panelQuestion.setLayout(new BoxLayout(panelQuestion, BoxLayout.Y_AXIS));
+        JPanel panelAnswer = new JPanel();
+        panelAnswer.setLayout(new BoxLayout(panelAnswer, BoxLayout.Y_AXIS));
 
-        // Panel für die Buttons
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        panelQuiz.add(panelQuestion);
+        panelQuiz.add(panelAnswer);
 
-        JButton A1 = new JButton("Hallo" + playerName);
-        JButton A2 = new JButton("Nein");
-        JButton A3 = new JButton("Ich will zu Mama!");
+        question = quiz.getQuestions().getFirst();
 
-        buttonPanel.add(A1);
-        buttonPanel.add(A2);
-        buttonPanel.add(A3);
+        JLabel questionLabel = new JLabel(question.getText());
+        panelQuestion.add(questionLabel);
 
-        add(buttonPanel, BorderLayout.CENTER);
+        answer1 = quiz.getQuestions().getFirst().getAnswers().getFirst();
+        answer2 = quiz.getQuestions().getFirst().getAnswers().get(1);
+        answer3 = quiz.getQuestions().getFirst().getAnswers().get(2);
 
-        // Reaktion auf Klick auf "Ja"
-        A1.addActionListener(e -> {
-            JFrame right = new JFrame("Richtig geraten du Kartoffel!");
-            right.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            right.setSize(300, 200);
-            right.setLocationRelativeTo(null);
-            right.add(new JLabel("RICHTIG! (schließe mich indem du aufs X klickts)", SwingConstants.CENTER));
-            right.setVisible(true);
+        JButton answer1Button = new JButton(answer1.getText());
+        answer1Button.addActionListener(new ButtonListener(this, quiz, 0, questionCount));
+        JButton answer2Button = new JButton(answer2.getText());
+        answer2Button.addActionListener(new ButtonListener(this, quiz, 1, questionCount));
+        JButton answer3Button = new JButton(answer3.getText());
+        answer3Button.addActionListener(new ButtonListener(this, quiz, 2, questionCount));
+        panelAnswer.add(answer1Button);
+        panelAnswer.add(answer2Button);
+        panelAnswer.add(answer3Button);
 
-        });
+
+        this.add(panelQuiz);
+
+
 
         setVisible(true);
+    }
+
+    public void updateQuestion(int questionCount) {
+        this.questionCount = questionCount;
+        this.question = quiz.getQuestions().get(questionCount);
+        answer1 = question.getAnswers().get(0);
+        answer2 = question.getAnswers().get(1);
+        answer3 = question.getAnswers().get(2);
+
+        questionLabel.setText(question.getText());
+        answer1Button.setText(answer1.getText());
+        answer2Button.setText(answer2.getText());
+        answer3Button.setText(answer3.getText());
     }
 }
