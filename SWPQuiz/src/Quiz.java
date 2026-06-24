@@ -1,6 +1,23 @@
 import java.util.ArrayList;
 
 public class Quiz {
+
+    private int score;
+    public int getScore() {
+        return score;
+    }
+
+
+    public void addPoint() {
+        score++;
+    }
+    public void resetScore() {
+        score = 0;
+    }
+
+
+    public void setScore1(int score1) {}
+
     private ArrayList<Questions> questions;
 
     private Answer answer1 = new Answer("Ja", true);

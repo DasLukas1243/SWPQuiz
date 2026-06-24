@@ -31,6 +31,7 @@ public class ButtonListener implements ActionListener {
         if(questionNumber < quiz.getQuestions().size()) {
             questionNumber++;
             if (correct) {
+                quiz.addPoint();//Punkt wird hinzugefügt wenn richtig
                 JOptionPane.showMessageDialog(quizWindow, "Correct Answer");
             }
             else {
