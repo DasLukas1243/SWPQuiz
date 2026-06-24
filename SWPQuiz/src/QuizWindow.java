@@ -10,19 +10,21 @@ public class QuizWindow extends JFrame {
     private Answer answer1;
     private Answer answer2;
     private Answer answer3;
+    private String playerName;
+
 
     JLabel questionLabel;
     JButton answer1Button;
     JButton answer2Button;
     JButton answer3Button;
 
-    QuizWindow(String playerName, Quiz quiz) {
+    public QuizWindow(String playerName, Quiz quiz) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 200);
         setLocationRelativeTo(null);
 
         this.quiz = quiz;
-
+        this.playerName = playerName;
         questionCount = 0;
 
         JPanel panelQuiz = new JPanel();
@@ -37,18 +39,18 @@ public class QuizWindow extends JFrame {
 
         question = quiz.getQuestions().getFirst();
 
-        JLabel questionLabel = new JLabel(question.getText());
+        questionLabel = new JLabel(question.getText());
         panelQuestion.add(questionLabel);
 
         answer1 = quiz.getQuestions().getFirst().getAnswers().getFirst();
         answer2 = quiz.getQuestions().getFirst().getAnswers().get(1);
         answer3 = quiz.getQuestions().getFirst().getAnswers().get(2);
 
-        JButton answer1Button = new JButton(answer1.getText());
+        answer1Button = new JButton(answer1.getText());
         answer1Button.addActionListener(new ButtonListener(this, quiz, 0, questionCount));
-        JButton answer2Button = new JButton(answer2.getText());
+        answer2Button = new JButton(answer2.getText());
         answer2Button.addActionListener(new ButtonListener(this, quiz, 1, questionCount));
-        JButton answer3Button = new JButton(answer3.getText());
+        answer3Button = new JButton(answer3.getText());
         answer3Button.addActionListener(new ButtonListener(this, quiz, 2, questionCount));
         panelAnswer.add(answer1Button);
         panelAnswer.add(answer2Button);
@@ -64,14 +66,19 @@ public class QuizWindow extends JFrame {
 
     public void updateQuestion(int questionCount) {
         this.questionCount = questionCount;
-        this.question = quiz.getQuestions().get(questionCount);
-        answer1 = question.getAnswers().get(0);
-        answer2 = question.getAnswers().get(1);
-        answer3 = question.getAnswers().get(2);
+        if (questionCount < quiz.getQuestions().size()) {
+            this.question = quiz.getQuestions().get(questionCount);
+            answer1 = question.getAnswers().get(0);
+            answer2 = question.getAnswers().get(1);
+            answer3 = question.getAnswers().get(2);
 
-        questionLabel.setText(question.getText());
-        answer1Button.setText(answer1.getText());
-        answer2Button.setText(answer2.getText());
-        answer3Button.setText(answer3.getText());
+            questionLabel.setText(question.getText());
+            answer1Button.setText(answer1.getText());
+            answer2Button.setText(answer2.getText());
+            answer3Button.setText(answer3.getText());
+        }
+        else {
+            JOptionPane.showMessageDialog(null, playerName + ", du hast das Quiz geschafft!");
+        }
     }
 }

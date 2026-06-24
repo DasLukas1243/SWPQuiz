@@ -21,11 +21,13 @@ public class ButtonListener implements ActionListener {
         this.questionNumber = questionNumber;
         this.question = quiz.getQuestions().get(questionNumber);
         answer = question.getAnswers().get(questionNumber);
+        this.answerIndex = answerIndex;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        correct = answer.isCorrect();
+//        correct = answer.isCorrect();
+        correct = quiz.getQuestions().get(questionNumber).getAnswers().get(answerIndex).isCorrect();
         if(questionNumber < quiz.getQuestions().size()) {
             questionNumber++;
             if (correct) {
