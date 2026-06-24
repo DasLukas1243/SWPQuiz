@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-
+//Fenster für Punktesystem
 public class ScoreWindow extends JFrame {
 
 
