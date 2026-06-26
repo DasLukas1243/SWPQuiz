@@ -13,6 +13,7 @@ public class QuizWindow extends JFrame {
     private String playerName;
 
 
+    JLabel scoreLabel;
     JLabel questionLabel;
     JButton answer1Button;
     JButton answer2Button;
@@ -56,6 +57,9 @@ public class QuizWindow extends JFrame {
         panelAnswer.add(answer2Button);
         panelAnswer.add(answer3Button);
 
+        scoreLabel = new JLabel();
+        scoreLabel.setText("Punkte: " + quiz.getScore());
+        panelAnswer.add(scoreLabel);
 
         this.add(panelQuiz);
 
@@ -76,6 +80,8 @@ public class QuizWindow extends JFrame {
             answer1Button.setText(answer1.getText());
             answer2Button.setText(answer2.getText());
             answer3Button.setText(answer3.getText());
+
+            scoreLabel.setText("Punkte: " + quiz.getScore());
         }
         else {
             JOptionPane.showMessageDialog(null, playerName + ", du hast das Quiz geschafft!");
