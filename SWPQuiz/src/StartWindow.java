@@ -56,9 +56,10 @@ public class StartWindow extends JFrame {
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                playerName =  nameField.getText();
+                playerName =  nameField.getText().trim();
                 if(playerName.isEmpty()) {
-                    System.exit(0);
+                    JOptionPane.showMessageDialog(StartWindow.this, "Bitte gib deine Namen ein!");
+                    return;
                 }
                 QuizWindow quizWindow = new QuizWindow(playerName, quiz);
                 startfenster.dispose();

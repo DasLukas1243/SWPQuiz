@@ -1,46 +1,43 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.MessageDigest;
 
 public class ButtonListener implements ActionListener {
 
     private QuizWindow quizWindow;
-
     private Quiz quiz;
-    private Questions question;
     private int questionNumber;
     private int answerIndex;
-    private Answer answer;
-
     private Boolean correct;
 
-    public ButtonListener(QuizWindow frame, Quiz quiz,  int answerIndex,  int questionNumber) {
-        quizWindow = frame;
-        this.quiz = quiz ;
+    public ButtonListener(QuizWindow frame, Quiz quiz, int answerIndex, int questionNumber) {
+        this.quizWindow = frame;
+        this.quiz = quiz;
         this.questionNumber = questionNumber;
-        this.question = quiz.getQuestions().get(questionNumber);
-        answer = question.getAnswers().get(questionNumber);
-        this.answerIndex = answerIndex;
+        this.answerIndex = answerIndex;  // Wichtig: Speichern welche Antwort geklickt wurde!
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        correct = answer.isCorrect();
-        correct = quiz.getQuestions().get(questionNumber).getAnswers().get(answerIndex).isCorrect();
-        if(questionNumber < quiz.getQuestions().size()) {
-            questionNumber++;
+        // Prüfe ob wir noch Fragen haben
+        if (questionNumber < quiz.getQuestions().size()) {
+            // Hole die richtige Antwort mit answerIndex!
+            correct = quiz.getQuestions()
+                    .get(questionNumber)
+                    .getAnswers()
+                    .get(answerIndex)  // ✅ RICHTIG: answerIndex, nicht questionNumber!
+                    .isCorrect();
+
+            // Feedback geben
             if (correct) {
-                quiz.addPoint();//Punkt wird hinzugefügt wenn richtig
-                JOptionPane.showMessageDialog(quizWindow, "Correct Answer");
+                quiz.addPoint();
+                JOptionPane.showMessageDialog(quizWindow, "✅ Richtig!");
+            } else {
+                JOptionPane.showMessageDialog(quizWindow, "❌ Falsch!");
             }
-            else {
-                JOptionPane.showMessageDialog(quizWindow, "Incorrect Answer");
-            }
-            quizWindow.updateQuestion(questionNumber);
-        }
-        else  {
-            JOptionPane.showMessageDialog(quizWindow, "No more Questions");
+
+            // Nächste Frage laden
+            quizWindow.updateQuestion(questionNumber + 1);
         }
     }
 }
