@@ -11,7 +11,7 @@ public class StartWindow extends JFrame {
     private Quiz quiz = new  Quiz();
 
 
-
+/// lallalaa
     public StartWindow() {
         startfenster = this;
         setTitle("SWP Quiz");

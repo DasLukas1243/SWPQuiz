@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Quiz {
-    private ArrayList<Questions> questions;
+        private ArrayList<Questions> questions;
 
     private Answer answer1 = new Answer("Ja", true);
     private Answer answer2 = new Answer("Nein", false);
