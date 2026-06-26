@@ -6,8 +6,6 @@ public class Quiz {
     public int getScore() {
         return score;
     }
-
-
     public void addPoint() {
         score++;
     }
