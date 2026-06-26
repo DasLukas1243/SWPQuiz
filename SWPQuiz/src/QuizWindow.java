@@ -85,6 +85,7 @@ public class QuizWindow extends JFrame {
         }
         else {
             JOptionPane.showMessageDialog(null, playerName + ", du hast das Quiz geschafft!");
+            dispose();
         }
     }
 }
