@@ -25,20 +25,20 @@ public class StartWindow extends JFrame {
 
         // Titel
         JLabel title = new JLabel("SWP Quiz");
-        JLabel unterUeberschrift = new JLabel(" Gib deinen Namen ein:");
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 28));
         title.setBorder(new EmptyBorder(20, 0, 20, 0));
 
-
-        unterUeberschrift.setFont(new Font("Arial", Font.ITALIC, 12));
-        unterUeberschrift.setForeground(Color.GRAY);
-
-        
+        startfenster.add(title, BorderLayout.NORTH);
 
         // Mittlerer Bereich
         JPanel centerPanel = new JPanel(new GridBagLayout());
         centerPanel.setBorder(new EmptyBorder(10, 40, 20, 40));
+
+        JLabel unterUeberschrift = new JLabel(" Gib deinen Namen ein:");
+        unterUeberschrift.setFont(new Font("Arial", Font.ITALIC, 12));
+        unterUeberschrift.setForeground(Color.GRAY);
+        centerPanel.add(unterUeberschrift);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
